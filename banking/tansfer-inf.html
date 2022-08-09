@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer</title>
+
+    <link rel="shortcut icon" href="/resources/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/resources/css/bootstrap.css">
+    <link rel="stylesheet" href="/resources/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resources/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="table-title mb-4">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>Transfer money Information</h1>
+                </div>
+                <div class="col-sm-6">
+                    <a href="banking.html" class="btn btn-outline-light"><i class="fa fa-list" aria-hidden="true"></i> <span>Customer list</span></a>
+                </div>
+            </div>
+        </div>
+        <form id="frmTransfer" method="post" novalidate="novalidate">
+            <fieldset class="row g-3">
+                <div class="form-group row">
+                    <div class="mb-3 col-md-3">
+                        <label class="col-sm-12 col-form-label">Sender ID</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" readonly="" id="senderId" name="senderId" value="705">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label class="col-sm-12 col-form-label">Sender Name</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" readonly="" id="senderName" name="senderName" value="Sebastian Phelps">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label class="col-sm-12 col-form-label">Email</label>
+                        <div class="col-sm-12">
+                            <input type="email" class="form-control" readonly="" id="email" name="email" value="myzy@mailinator.com">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label class="col-sm-12 col-form-label">Sender balance</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control num-space" readonly="" id="balance" name="balance" value="50050000">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-4">
+                    <div class="mb-3 col-md-3">
+                        <label for="recipient_id" class="col-sm-12 col-form-label">Recipient Name</label>
+                        <div class="col-sm-12">
+                            <select id="recipient_id" class="form-select" name="recipientId">
+                                <option value="715">(715) Madaline Weaver</option>
+                                <option value="725">(725) Aline Hopkins</option>
+                                <option value="735">(735) Mira Blevins</option>
+                                <option value="775">(775) Aspen Craig</option>
+                                <option value="785">(785) Rashad Aguilar</option>
+                                <option value="795">(795) Scarlett Holmes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label class="col-sm-12 col-form-label">Transfer Amount ($)</label>
+                        <div class="col-sm-12">
+                            <input type="text" id="transferAmount" class="form-control num-space" name="transferAmount" value="">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label class="col-sm-12 col-form-label">Fees (%)</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control num-space" value="10" readonly="">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label class="col-sm-12 col-form-label">Total amount of transaction ($)</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control num-space" readonly="" id="transactionAmount" name="transactionAmount" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="mb-3 col-md-12">
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-outline-primary">
+                                <i class="fa fa-exchange" aria-hidden="true"></i>
+                                 Transfer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+
+    <script type="text/javascript" src="/resources/js/sweetalert2.min.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery.validate-1.19.3.min.js"></script>
+    <script type="text/javascript" src="/resources/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/resources/js/popper-v1.16.0.min.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery.number.js"></script>
+    <script type="text/javascript" src="/resources/js/custom-validation.js"></script>
+    <script type="text/javascript" src="/resources/js/app.js"></script>
+    <div class="footer">
+        <div id="message-alert">
+            
+            
+            <div class="alert-danger hide">
+                <h5>Please correct errors below FE:</h5>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $("#transferAmount").on("change", function () {
+                let transferAmount = $(this).val();
+                let fees = 10;
+                let feeAmount = transferAmount * fees / 100;
+                let transactionAmount = parseInt(transferAmount) + feeAmount;
+                $("#transactionAmount").val(transactionAmount);
+            });
+        });
+    </script>
+</body>
+
+</html>
